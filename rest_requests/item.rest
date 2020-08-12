@@ -1,0 +1,2 @@
+GET http://localhost:8080/item/5f3451f94d24cc116cde71b3 HTTP/1.1
+content-type: application/json
