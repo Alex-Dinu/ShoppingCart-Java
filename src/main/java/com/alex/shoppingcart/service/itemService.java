@@ -19,7 +19,7 @@ public class itemService {
     }
 
     public Optional<ItemModel> getItemById(String id) {
-        return itemRepository.findById(id);
+        return itemRepository.findById(new ObjectId(id));
     }
 
 }

@@ -4,31 +4,53 @@ content-type: application/json
 [
     {
         "description": "Bread",
-        "price": 2.80
+        "price": 2.80,
+        "imageFile": "bread.png"
     },
         {
         "description": "Milk",
-        "price": 1.99
+        "price": 1.99,
+        "imageFile": "milk.png"
     },
     {
         "description": "Eggs",
-        "price": 0.89
-    },
-    {
-        "description": "Nutella",
-        "price": 8.88
+        "price": 0.89,
+        "imageFile": "eggs.png"
     },
     {
         "description": "Tomatoes",
-        "price": 1.99
-    },
-    {
-        "description": "Onions",
-        "price": 2.39
+        "price": 1.99,
+        "imageFile": "tomato.png"
     },
     {
         "description": "Beers",
-        "price": 12.99
+        "price": 12.99,
+        "imageFile": "beer.png"
+    },
+    {
+        "description": "Butter",
+        "price": 12.99,
+        "imageFile": "butter.png"
+    },
+    {
+        "description": "Lettuce",
+        "price": 12.99,
+        "imageFile": "lettuce.png"
+    },
+    {
+        "description": "Liquid Soap",
+        "price": 12.99,
+        "imageFile": "liquid-soap.png"
+    },
+    {
+        "description": "Olive Oil",
+        "price": 12.99,
+        "imageFile": "olive-oil.png"
+    },
+    {
+        "description": "Potato Chips",
+        "price": 12.99,
+        "imageFile": "potato-chips.png"
     }
     
 ]

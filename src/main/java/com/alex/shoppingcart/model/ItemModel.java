@@ -8,23 +8,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class ItemModel {
 
     @Id
-    private String id;
+    private ObjectId id;
     private String description;
     private double price;
+    private String imageFile;
 
-    public ItemModel(String description, double price) {
+    public ItemModel(String description, double price, String imageFile) {
         this.description = description;
         this.price = price;
+        this.imageFile = imageFile;
     }
 
     public ItemModel() {
     }
 
     public String getId() {
-        return id;
+        return id.toString();
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -42,6 +44,14 @@ public class ItemModel {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(String imageFile) {
+        this.imageFile = imageFile;
     }
 
 }

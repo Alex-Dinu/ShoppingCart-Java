@@ -2,14 +2,14 @@ package com.alex.shoppingcart.model;
 
 public class InputBasketItemModel {
 
-        private int id;
+        private String id;
         private int quantity;
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
