@@ -18,8 +18,8 @@ public class itemService {
         itemRepository.insert(item);
     }
 
-    public Optional<ItemModel> getItemById(String id) {
-        return itemRepository.findById(new ObjectId(id));
+    public ItemModel getItemById(String id) {
+        return itemRepository.findById(new ObjectId(id)).get();
     }
 
 }
