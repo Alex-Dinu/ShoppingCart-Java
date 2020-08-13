@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.bson.types.ObjectId;
 
 @Service
-public class itemService {
+public class ItemService {
     @Autowired
     private ItemRepository itemRepository;
 

@@ -1,7 +1,7 @@
 package com.alex.shoppingcart.rest;
 
 import com.alex.shoppingcart.model.ItemModel;
-import com.alex.shoppingcart.service.itemService;
+import com.alex.shoppingcart.service.ItemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,10 +27,10 @@ import org.bson.types.ObjectId;
 @CrossOrigin // allows requests from all domains
 @Tag(name = "Item Controller", description = "Lets consumers manage individual item data.")
 
-public class itemController {
+public class ItemController {
 
     @Autowired
-    private itemService itemService;
+    private ItemService itemService;
 
     @Operation(summary = "Retriev an item by the Item Id.")
     @ApiResponses(value = {
