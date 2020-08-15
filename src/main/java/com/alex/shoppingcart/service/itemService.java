@@ -6,7 +6,6 @@ import com.alex.shoppingcart.model.ItemModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import org.bson.types.ObjectId;
 
 @Service

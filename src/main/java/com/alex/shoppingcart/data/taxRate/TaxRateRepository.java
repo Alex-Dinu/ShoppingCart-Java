@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class TaxRate implements TaxRateGetter {
+public class TaxRateRepository implements TaxRateGetter {
 
     private String state;
     private TaxRateModel taxRateData;
-    
-   
-    private TaxRateModel getTaxRateFromApiCall(String state){
+
+
+    private TaxRateModel getTaxRateFromApiCall(String state) {
         String uri = "http://localhost:8088/tax/" + state;
         RestTemplate restTemplate = new RestTemplate();
         TaxRateModel taxRate = restTemplate.getForObject(uri, TaxRateModel.class);
@@ -28,7 +28,7 @@ public class TaxRate implements TaxRateGetter {
     }
 
     public TaxRateModel getTaxRateData() {
-        if(this.taxRateData == null){
+        if (this.taxRateData == null) {
             setTaxRateData();
         }
 
@@ -38,4 +38,5 @@ public class TaxRate implements TaxRateGetter {
     public void setTaxRateData() {
         this.taxRateData = getTaxRateFromApiCall(this.getState());
     }
+
 }

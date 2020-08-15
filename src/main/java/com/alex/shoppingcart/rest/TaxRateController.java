@@ -1,7 +1,7 @@
 package com.alex.shoppingcart.rest;
 
-import com.alex.shoppingcart.model.ItemModel;
-import com.alex.shoppingcart.service.ItemService;
+import com.alex.shoppingcart.model.TaxRateModel;
+import com.alex.shoppingcart.service.TaxRateService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,28 +20,21 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/tax")
 @CrossOrigin // allows requests from all domains
-@Tag(name = "Item Controller", description = "Lets consumers manage individual item data.")
+@Tag(name = "Tax Controller", description = "Get tax rate data.")
 
-public class ItemController {
+public class TaxRateController {
 
     @Autowired
-    private ItemService itemService;
+    private TaxRateService taxRateService;
 
-    @Operation(summary = "Retriev an item by the Item Id.")
+    @Operation(summary = "Get tax rate by state.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Item details added top the response..", content = @Content(schema = @Schema(implementation = ItemModel.class))) })
-
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public ResponseEntity<ItemModel> getItemById(@PathVariable("id") String id) {
-        ItemModel item = itemService.getItemById(id);
-        if (item.getId().length() == 0) {
-            return new ResponseEntity<ItemModel>(HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<ItemModel>(item, HttpStatus.OK);
+            @ApiResponse(responseCode = "200", description = "Tax rate for the state.", content = @Content(schema = @Schema(implementation = TaxRateModel.class))) })
+    @RequestMapping(method = RequestMethod.GET, value = "/{state}")
+    public ResponseEntity<TaxRateModel> getTaxRate(@PathVariable("state") String state) {
+        return new ResponseEntity<TaxRateModel>(taxRateService.getTaxRateByState(state), HttpStatus.OK);
 
     }
-
 }

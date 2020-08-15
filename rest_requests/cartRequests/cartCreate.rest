@@ -1,0 +1,20 @@
+POST http://localhost:8080/cart HTTP/1.1
+content-type: application/json
+
+{
+    "cartItems":
+    [
+        {
+            "itemId": "5f352c21c1381d1d97156808",
+            "description": "Bread",
+            "price": 2.8,
+            "quantity": 1
+        },
+                {
+            "itemId": "5f352c21c1381d1d97156809",
+            "description": "Milk",
+            "price": 1.99,
+            "quantity": 3
+        }
+    ]
+}
