@@ -1,0 +1,26 @@
+POST http://localhost:8080/cart HTTP/1.1
+content-type: application/json
+
+
+
+{"cart":{"id":"5f3c80d367fc86519c8bfaca","cartItems":[{"price":1.99,"description":"Milk","imageFile":"milk.png","itemId":"5f352c21c1381d1d97156809","quantity":1}]}}
+
+
+
+# {
+#     "cartItems":
+#     [
+#         {
+#             "itemId": "5f352c21c1381d1d97156808",
+#             "description": "Bread",
+#             "price": 2.8,
+#             "quantity": 1
+#         },
+#                 {
+#             "itemId": "5f352c21c1381d1d97156809",
+#             "description": "Milk",
+#             "price": 1.99,
+#             "quantity": 4
+#         }
+#     ]
+# }

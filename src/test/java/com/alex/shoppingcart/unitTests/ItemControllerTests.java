@@ -1,4 +1,4 @@
-package com.alex.shoppingcart.controllerTests;
+package com.alex.shoppingcart.unitTests;
 
 import org.junit.runner.RunWith;
 
