@@ -1,7 +1,5 @@
 package com.alex.shoppingcart.integrationTests;
 
-import com.alex.shoppingcart.model.ItemModel;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +12,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.alex.shoppingcart.model.cart.CartItemModel;
+import com.alex.shoppingcart.model.cart.CartModel;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class ItemControllerTests {
+
+public class CartControllerTests {
 
     @LocalServerPort
     private int port;
@@ -27,26 +33,19 @@ public class ItemControllerTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private final String host = "http://localhost:";
-    private final String path = "/item/";
-
     @Test
-    public void getItemById_Success() throws Exception {
-        final String testId = "5f352c21c1381d1d97156808";
+    public void createCartWIthNoItems() throws Exception {
+        List<CartItemModel> cartItems = new ArrayList<>();
+        // CartItemModel item = new CartItemModel();
+        // item.setDescription("pc");
+        // item.setItemId("333");
+        // cartItems.add(item);
+        CartModel cart = new CartModel();
+        cart.setCartItems(cartItems);
 
-        ResponseEntity<ItemModel> response = this.restTemplate.getForEntity(host + port + path + testId,
-                ItemModel.class);
+        ResponseEntity<CartModel> response = this.restTemplate.postForEntity("http://localhost:" + port + "/cart", cart,
+                CartModel.class);
 
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
-    }
-
-    @Test
-    public void getItemById_NotFoundExceptionExpected() throws Exception {
-        final String testId = "invalidId";
-
-        ResponseEntity<ItemModel> response = this.restTemplate.getForEntity(host + port + path + testId,
-                ItemModel.class);
-
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.NOT_FOUND));
     }
 }

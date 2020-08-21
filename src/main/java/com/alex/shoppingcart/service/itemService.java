@@ -1,5 +1,6 @@
 package com.alex.shoppingcart.service;
 
+import com.alex.shoppingcart.customExceptions.ItemNotFoundException;
 import com.alex.shoppingcart.data.ItemRepository;
 import com.alex.shoppingcart.model.ItemModel;
 
@@ -17,8 +18,16 @@ public class ItemService {
         itemRepository.insert(item);
     }
 
-    public ItemModel getItemById(String id) {
-        return itemRepository.findById(new ObjectId(id)).get();
+    public ItemModel getItemById(String id) throws ItemNotFoundException {
+        try {
+            ItemModel searchedItem = itemRepository.findById(new ObjectId(id)).get();
+            if (searchedItem.getId().length() == 0) {
+                throw new ItemNotFoundException(id + " not found.");
+            }
+            return searchedItem;
+        } catch (Exception e) {
+            throw new ItemNotFoundException(id + " not found.", e);
+        }
     }
 
 }

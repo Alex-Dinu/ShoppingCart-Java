@@ -1,5 +1,6 @@
 package com.alex.shoppingcart.rest;
 
+import com.alex.shoppingcart.customExceptions.ItemNotFoundException;
 import com.alex.shoppingcart.model.ItemModel;
 import com.alex.shoppingcart.service.ItemService;
 
@@ -31,17 +32,17 @@ public class ItemController {
 
     @Operation(summary = "Retriev an item by the Item Id.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Item details added top the response..", content = @Content(schema = @Schema(implementation = ItemModel.class))) })
-
+            @ApiResponse(responseCode = "200", description = "Item details added top the response..", content = @Content(schema = @Schema(implementation = ItemModel.class))),
+            @ApiResponse(responseCode = "404", description = "Item was not found for the requested Id.") })
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity<ItemModel> getItemById(@PathVariable("id") String id) {
-        ItemModel item = itemService.getItemById(id);
-        if (item.getId().length() == 0) {
+        ItemModel item;
+        try {
+            item = itemService.getItemById(id);
+            return new ResponseEntity<ItemModel>(item, HttpStatus.OK);
+        } catch (Exception e) {
             return new ResponseEntity<ItemModel>(HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity<ItemModel>(item, HttpStatus.OK);
-
     }
 
 }
